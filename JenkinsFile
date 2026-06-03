@@ -1,9 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Hello') {
             steps {
                 echo "Build number "+ currentBuild.number
+            }
+            post {
+                success {
+                    script {
+                        currentBuild.result = "FAILURE"
+                    }
+                }
+            }
+        }
+        post {
+            always {
+                echo currentBuild.currentResult
             }
         }
     }
