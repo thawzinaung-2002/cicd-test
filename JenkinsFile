@@ -13,10 +13,10 @@ pipeline {
                 }
             }
         }
-        post {
+    }
+    post {
             always {
                 echo currentBuild.currentResult
             }
         }
-    }
 }
